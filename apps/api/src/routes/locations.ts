@@ -4,7 +4,7 @@ import { locations } from '@xg2huo/db';
 
 export const locationsRoutes: FastifyPluginAsync = async (fastify) => {
   // Get all locations with pagination
-  fastify.get('/', async (request, reply) => {
+  fastify.get('/', async (request, _reply) => {
     const { page = '1', limit = '50' } = request.query as { page?: string; limit?: string };
     const pageNum = parseInt(page, 10);
     const limitNum = parseInt(limit, 10);

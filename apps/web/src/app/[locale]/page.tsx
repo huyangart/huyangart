@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Button, Card, CardHeader, CardTitle, CardContent } from '@xg2huo/ui';
 import Link from 'next/link';
 
-export default function HomePage() {
-  const t = useTranslations();
+export default async function HomePage() {
+  const t = await getTranslations();
 
   return (
     <div className="min-h-screen">

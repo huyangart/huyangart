@@ -1,3 +1,8 @@
-export { default } from 'next-auth/middleware';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './routing';
 
-export const config = { matcher: ['/post'] };
+export default createMiddleware(routing);
+
+export const config = {
+  matcher: ['/', '/(en|zh-CN|km)/:path*'],
+};

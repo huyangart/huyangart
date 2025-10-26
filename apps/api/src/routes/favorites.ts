@@ -4,7 +4,7 @@ import { favorites } from '@xg2huo/db';
 
 export const favoritesRoutes: FastifyPluginAsync = async (fastify) => {
   // Get user's favorites
-  fastify.get('/user/:userId', async (request, reply) => {
+  fastify.get('/user/:userId', async (request, _reply) => {
     const { userId } = request.params as { userId: string };
     const { page = '1', limit = '20' } = request.query as { page?: string; limit?: string };
     const pageNum = parseInt(page, 10);

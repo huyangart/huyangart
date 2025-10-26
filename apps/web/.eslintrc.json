@@ -1,3 +1,14 @@
 {
-  "extends": "@xg2huo/config/eslint-next.json"
+  "extends": ["next", "prettier"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ]
+  }
 }

@@ -1,9 +1,9 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Button, Card, CardHeader, CardTitle } from '@xg2huo/ui';
 import Link from 'next/link';
 
-export default function CategoriesPage() {
-  const t = useTranslations();
+export default async function CategoriesPage() {
+  const t = await getTranslations();
 
   const categories = [
     { id: '1', name: 'Electronics', slug: 'electronics' },

@@ -23,7 +23,7 @@ export const categories = sqliteTable('categories', {
     .$defaultFn(() => createId()),
   name: text('name').notNull(),
   slug: text('slug').notNull().unique(),
-  parentId: text('parent_id').references(() => categories.id, { onDelete: 'set null' }),
+  parentId: text('parent_id'),
   createdAt: integer('created_at', { mode: 'timestamp' })
     .notNull()
     .$defaultFn(() => new Date()),

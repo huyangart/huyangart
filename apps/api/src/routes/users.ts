@@ -4,7 +4,7 @@ import { users } from '@xg2huo/db';
 
 export const usersRoutes: FastifyPluginAsync = async (fastify) => {
   // Get all users with pagination
-  fastify.get('/', async (request, reply) => {
+  fastify.get('/', async (request, _reply) => {
     const { page = '1', limit = '10' } = request.query as { page?: string; limit?: string };
     const pageNum = parseInt(page, 10);
     const limitNum = parseInt(limit, 10);

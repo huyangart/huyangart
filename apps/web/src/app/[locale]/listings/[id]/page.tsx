@@ -1,9 +1,10 @@
-import { useTranslations } from 'next-intl';
+import { getTranslations } from 'next-intl/server';
 import { Button } from '@xg2huo/ui';
 import Link from 'next/link';
 
-export default function ListingPage({ params }: { params: { id: string } }) {
-  const t = useTranslations();
+export default async function ListingPage({ params }: { params: Promise<{ id: string }> }) {
+  const t = await getTranslations();
+  const { id: _id } = await params;
 
   return (
     <div className="min-h-screen">

@@ -1,4 +1,5 @@
 /** @type {import('next').NextConfig} */
+const withNextIntl = require('next-intl/plugin')('./i18n/request.ts');
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -6,12 +7,9 @@ const withPWA = require('next-pwa')({
   disable: process.env.NODE_ENV === 'development',
 });
 
-const nextConfig = withPWA({
+const nextConfig = {
   reactStrictMode: true,
   transpilePackages: ['@xg2huo/ui'],
-  experimental: {
-    typedRoutes: true,
-  },
-});
+};
 
-module.exports = nextConfig;
+module.exports = withNextIntl(withPWA(nextConfig));
