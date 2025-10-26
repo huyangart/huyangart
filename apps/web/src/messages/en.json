@@ -1,0 +1,42 @@
+{
+  "common": {
+    "appName": "xg2huo",
+    "home": "Home",
+    "categories": "Categories",
+    "post": "Post Ad",
+    "search": "Search",
+    "login": "Login",
+    "logout": "Logout",
+    "favorites": "Favorites"
+  },
+  "home": {
+    "title": "Welcome to xg2huo",
+    "subtitle": "Your local classifieds marketplace",
+    "searchPlaceholder": "Search for items...",
+    "featuredListings": "Featured Listings"
+  },
+  "categories": {
+    "title": "Browse Categories",
+    "allCategories": "All Categories"
+  },
+  "listing": {
+    "title": "Listing Details",
+    "price": "Price",
+    "location": "Location",
+    "description": "Description",
+    "contact": "Contact Seller",
+    "addToFavorites": "Add to Favorites"
+  },
+  "post": {
+    "title": "Post a New Listing",
+    "formTitle": "Create Listing",
+    "titleLabel": "Title",
+    "descriptionLabel": "Description",
+    "priceLabel": "Price",
+    "categoryLabel": "Category",
+    "locationLabel": "Location",
+    "imagesLabel": "Images",
+    "submit": "Submit Listing",
+    "uploadImages": "Upload Images (Coming Soon)"
+  }
+}

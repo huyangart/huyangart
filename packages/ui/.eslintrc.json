@@ -1,0 +1,3 @@
+{
+  "extends": "@xg2huo/config/eslint-next.json"
+}

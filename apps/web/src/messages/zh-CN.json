@@ -1,0 +1,42 @@
+{
+  "common": {
+    "appName": "xg2huo",
+    "home": "首页",
+    "categories": "分类",
+    "post": "发布广告",
+    "search": "搜索",
+    "login": "登录",
+    "logout": "登出",
+    "favorites": "收藏"
+  },
+  "home": {
+    "title": "欢迎来到 xg2huo",
+    "subtitle": "您的本地分类信息市场",
+    "searchPlaceholder": "搜索商品...",
+    "featuredListings": "精选列表"
+  },
+  "categories": {
+    "title": "浏览分类",
+    "allCategories": "所有分类"
+  },
+  "listing": {
+    "title": "商品详情",
+    "price": "价格",
+    "location": "位置",
+    "description": "描述",
+    "contact": "联系卖家",
+    "addToFavorites": "添加到收藏"
+  },
+  "post": {
+    "title": "发布新商品",
+    "formTitle": "创建商品列表",
+    "titleLabel": "标题",
+    "descriptionLabel": "描述",
+    "priceLabel": "价格",
+    "categoryLabel": "分类",
+    "locationLabel": "位置",
+    "imagesLabel": "图片",
+    "submit": "提交商品",
+    "uploadImages": "上传图片（即将推出）"
+  }
+}

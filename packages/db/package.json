@@ -1,0 +1,27 @@
+{
+  "name": "@xg2huo/db",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Database schema and migrations using Drizzle ORM",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio",
+    "lint": "echo 'No linting configured for db package'",
+    "build": "echo 'No build step for db package'",
+    "test": "echo 'No tests configured for db package'"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.5.2",
+    "drizzle-orm": "^0.30.4",
+    "@paralleldrive/cuid2": "^2.2.2"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.14",
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}

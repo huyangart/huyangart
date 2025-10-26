@@ -1,0 +1,3 @@
+{
+  "extends": "@xg2huo/config/eslint-node.json"
+}
