@@ -1,0 +1,42 @@
+{
+  "common": {
+    "appName": "xg2huo",
+    "home": "ទំព័រដើម",
+    "categories": "ប្រភេទ",
+    "post": "ដាក់ផ្សាយ",
+    "search": "ស្វែងរក",
+    "login": "ចូល",
+    "logout": "ចេញ",
+    "favorites": "សំណព្វ"
+  },
+  "home": {
+    "title": "សូមស្វាគមន៍មកកាន់ xg2huo",
+    "subtitle": "ទីផ្សារផ្សព្វផ្សាយក្នុងស្រុករបស់អ្នក",
+    "searchPlaceholder": "ស្វែងរកទំនិញ...",
+    "featuredListings": "បញ្ជីពិសេស"
+  },
+  "categories": {
+    "title": "រកមើលប្រភេទ",
+    "allCategories": "ប្រភេទទាំងអស់"
+  },
+  "listing": {
+    "title": "ព័ត៌មានលម្អិត",
+    "price": "តម្លៃ",
+    "location": "ទីតាំង",
+    "description": "ការពិពណ៌នា",
+    "contact": "ទាក់ទងអ្នកលក់",
+    "addToFavorites": "បន្ថែមទៅសំណព្វ"
+  },
+  "post": {
+    "title": "ដាក់ផ្សាយថ្មី",
+    "formTitle": "បង្កើតបញ្ជី",
+    "titleLabel": "ចំណងជើង",
+    "descriptionLabel": "ការពិពណ៌នា",
+    "priceLabel": "តម្លៃ",
+    "categoryLabel": "ប្រភេទ",
+    "locationLabel": "ទីតាំង",
+    "imagesLabel": "រូបភាព",
+    "submit": "ដាក់ស្នើ",
+    "uploadImages": "ផ្ទុកឡើងរូបភាព (មកដល់ឆាប់ៗ)"
+  }
+}
