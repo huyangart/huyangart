@@ -159,6 +159,100 @@ The application supports three languages:
 
 Translations are stored in JSON files in `apps/web/src/messages/`.
 
+## Suno Control Panel Architecture (Proposed)
+
+This section outlines a production-grade, modular architecture for a private “Suno Control Panel / Composer Console.” The system treats Suno as a generation engine while giving the creator full control over structured prompting, asset management, and post-production pipelines.
+
+### Goals
+- **Structured prompting**: enforce a multi-layer prompt system (Structure, Harmony, Emotion, Render).
+- **Adapter isolation**: avoid hard-coupling to a single third-party API provider.
+- **Asset governance**: manage projects, songs, versions, metadata, and legal artifacts.
+- **Pipeline readiness**: pass generation intent into downstream mastering workflows.
+
+### High-Level Modules
+
+#### 1) Frontend (Producer Console)
+- **Prompt Builder**
+  - Layered prompt editor: Structure, Harmony, Emotion, Render.
+  - Preset library with tagging and versioning.
+  - “Target Profile” selector (Streaming / Broadcast / Demo).
+- **Job Queue**
+  - Batch submission, priority ordering, and retry handling.
+  - Status timeline (queued → running → completed → failed).
+- **Result Inspector**
+  - A/B listening, rating, approval/kill switch.
+  - Export panel for WAV/MP3 and metadata bundles.
+- **Project Library**
+  - Project → Song → Version hierarchy.
+  - Full prompt, model version, timestamp, ownership, and rights metadata.
+
+#### 2) Application Service (Orchestration Layer)
+- **Generation Service**
+  - Converts structured prompts into provider-specific payloads.
+  - Stores full reproducible prompt + config snapshots.
+  - Pushes jobs into a queue for async processing.
+- **Prompt Compiler**
+  - Deterministic prompt assembly and linting rules.
+  - Enforces layering and ensures required fields.
+- **Target Profile Engine**
+  - Maps “target profiles” to prompt hints and export labels.
+  - Example: Streaming (-14 LUFS) → dynamic preservation tag.
+- **Asset Manager**
+  - Versioned storage of audio, stems, and metadata.
+  - Generates copyright PDF + metadata packs.
+
+#### 3) Adapter Layer (Provider Abstraction)
+- **GenerationAdapter Interface**
+  - `submitJob(prompt, options) -> jobId`
+  - `getStatus(jobId) -> status`
+  - `fetchResult(jobId) -> audioUrls + metadata`
+- **Provider Implementations**
+  - Adapter A (current third-party API)
+  - Adapter B (future migration)
+  - Mock Adapter (local testing)
+
+#### 4) Data Layer
+- **Core Entities**
+  - Project
+  - Song
+  - Version
+  - PromptSnapshot
+  - Job
+  - ProviderRun
+  - Asset (audio, metadata, legal docs)
+- **Storage**
+  - SQL DB for metadata
+  - Object storage for audio + PDFs
+
+### Suggested Service Boundaries
+
+```
+Frontend (Web)
+  └── API Gateway
+        ├── Auth / User Profiles
+        ├── Prompt Service
+        ├── Job Queue Service
+        ├── Asset Service
+        └── Legal/Metadata Service
+
+Worker (Background)
+  └── Generation Orchestrator
+        ├── Adapter Router
+        ├── Provider Adapter A/B
+        └── Result Normalizer
+```
+
+### MVP Cut (First Release)
+1. **Prompt Builder** with layered prompt schema.
+2. **Job Queue** with batch submit + status.
+3. **Result Inspector** with tagging, approval, export.
+
+### Non-Functional Requirements
+- **Provider independence** via adapters.
+- **Full reproducibility** of every generated output.
+- **Clear legal metadata** embedded in every export.
+- **No reverse engineering** of official endpoints.
+
 Routes are prefixed with the locale: `/{locale}/path`
 - `/en/categories`
 - `/zh-CN/categories`
