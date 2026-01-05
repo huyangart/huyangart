@@ -1,17 +1,18 @@
 import { FastifyPluginAsync } from 'fastify';
 import { eq } from 'drizzle-orm';
 import { users } from '@xg2huo/db';
+import { parsePagination } from '../utils/pagination';
 
 export const usersRoutes: FastifyPluginAsync = async (fastify) => {
   // Get all users with pagination
   fastify.get('/', async (request, _reply) => {
-    const { page = '1', limit = '10' } = request.query as { page?: string; limit?: string };
-    const pageNum = parseInt(page, 10);
-    const limitNum = parseInt(limit, 10);
-    const offset = (pageNum - 1) * limitNum;
+    const { page, limit, offset } = parsePagination(
+      request.query as { page?: string; limit?: string },
+      { page: 1, limit: 10 },
+    );
 
-    const results = await fastify.db.select().from(users).limit(limitNum).offset(offset);
-    return { data: results, page: pageNum, limit: limitNum };
+    const results = await fastify.db.select().from(users).limit(limit).offset(offset);
+    return { data: results, page, limit };
   });
 
   // Get user by ID
