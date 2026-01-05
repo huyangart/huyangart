@@ -1,23 +1,24 @@
 import { FastifyPluginAsync } from 'fastify';
 import { eq, desc } from 'drizzle-orm';
 import { listings, images } from '@xg2huo/db';
+import { parsePagination } from '../utils/pagination';
 
 export const listingsRoutes: FastifyPluginAsync = async (fastify) => {
   // Get all listings with pagination
   fastify.get('/', async (request, _reply) => {
-    const { page = '1', limit = '20' } = request.query as { page?: string; limit?: string };
-    const pageNum = parseInt(page, 10);
-    const limitNum = parseInt(limit, 10);
-    const offset = (pageNum - 1) * limitNum;
+    const { page, limit, offset } = parsePagination(
+      request.query as { page?: string; limit?: string },
+      { page: 1, limit: 20 },
+    );
 
     const results = await fastify.db
       .select()
       .from(listings)
       .orderBy(desc(listings.createdAt))
-      .limit(limitNum)
+      .limit(limit)
       .offset(offset);
 
-    return { data: results, page: pageNum, limit: limitNum };
+    return { data: results, page, limit };
   });
 
   // Get listing by ID with images
